@@ -1,0 +1,3 @@
+[submodule "TP2/static-website-example"]
+	path = TP2/static-website-example
+	url = https://github.com/diranetafen/static-website-example.git
