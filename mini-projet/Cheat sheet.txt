@@ -1,0 +1,67 @@
+Part 1 : Build and test
+
+# To clone the repository:
+$ git clone https://github.com/diranetafen/student-list.git
+
+# To build the image:
+$ docker build -t student-list:v1 .
+
+# To run the image (don't forget to mount student_age.json file at /data/student_age.json in the container):
+$ docker run -d --name api -p 8500:5000 -v $PWD/student_age.json:/data/student_age.json student-list:v1 
+
+# To check the container is listening and ready to answer:
+$ docker ps -a
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+b85f3c7c50f6   student-list:v1   "python ./student_ag…"   13 minutes ago   Up 13 minutes   0.0.0.0:8500->5000/tcp, :::8500->5000/tcp   api
+
+# To make sure that the API correctly responding:
+$ curl -u toto:python -X GET http://0.0.0.0:8500/pozos/api/v1.0/get_student_ages
+{
+  "student_ages": {
+    "alice": "12", 
+    "bob": "13"
+  }
+}
+
+Part 2 : Infrastructure As Code
+
+# Don't foget to delete previous created container:
+$ docker rm -f api
+
+# Don't forget to to update the following line in index.html:
+Replace
+$url = 'http://<api_ip_or_name:port>/pozos/api/v1.0/get_student_ages';
+by
+$url = 'http://api:5000/pozos/api/v1.0/get_student_ages';
+
+# To run docker-compose.yml:
+$ docker-compose up -d
+
+# To reach the website:
+Go to http://IP_machine:8000
+
+Part 3 Docker Registry (deploy a private registry and store the built image 'student-list:v1')
+
+# We create a network to place our containers in it:
+$ docker network create eazy
+
+# To run the back-end container of our registry (with delete button):
+$ docker run --name registry -d -p 5000:5000 -e REGISTRY_STORAGE_DELETE_ENABLED=true --net eazy registry:2
+
+# To run the front-end container of our registry:
+$ docker run --name frontend-eazy -d -p 8070:80 --net eazy -e REGISTRY_URL=http://localhost:5000 -e DELETE_IMAGES=true -e REGISTRY_TITLE=eazytraining joxit/docker-registry-ui:1.5-static
+
+# To tag the image so that it points to my registry:
+$ docker tag student-list:v1 localhost:5000/student-list:v1
+
+# To push it:
+$ docker push localhost:5000/student-list:v1
+
+# To list all repositories locally:
+$ curl http://localhost:5000/v2/_catalog
+{"repositories":["student-list"]}
+
+# To see the pushed image on a webinterface :
+Go to http://localhost:8090
+
+
