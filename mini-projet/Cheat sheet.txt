@@ -23,6 +23,9 @@ $ curl -u toto:python -X GET http://0.0.0.0:8500/pozos/api/v1.0/get_student_ages
   }
 }
 
+
+
+
 Part 2 : Infrastructure As Code
 
 # Don't foget to delete previous created container:
@@ -39,6 +42,9 @@ $ docker-compose up -d
 
 # To reach the website:
 Go to http://IP_machine:8000
+
+
+
 
 Part 3 Docker Registry (deploy a private registry and store the built image 'student-list:v1')
 
@@ -63,5 +69,3 @@ $ curl http://localhost:5000/v2/_catalog
 
 # To see the pushed image on a webinterface :
 Go to http://localhost:8090
-
-
