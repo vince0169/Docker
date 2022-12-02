@@ -5,20 +5,20 @@
 
 ## :file_folder: TP2 :file_folder:
 
-We will create an image that will be a web server that will use the code contained in the folder static-website-example
+We will create an image that will be a web server that will use the code contained in the folder static-website-example.
 The goal is that our website is directly embedded in an image.
-So when we will deploy our container with our image, our website will be available
-We will create 2 images (Dockerfile_v1 and Dockerfile_v2)
+So when we will deploy our container with our image, our website will be available.
+We will create 2 images (Dockerfile_v1 and Dockerfile_v2).
 
-The 1st file (Dockerfile_v1) requires to make a copy (with the git clone command) of our static-website-example folder, before building a Docker image
-The 2nd file (Dockerfile_v2) does not require this step because it directly integrates the git clone command which allows to retrieve dynamically the last version of the application code which is on Github
+The 1st file (Dockerfile_v1) requires to make a copy (with the git clone command) of our static-website-example folder, before building a Docker image.
+The 2nd file (Dockerfile_v2) does not require this step because it directly integrates the git clone command which allows to retrieve dynamically the last version of the application code which is on Github.
 
 ## :file_folder: TP5 :file_folder:
 
-The goal of this exercise is to deploy the Odoo application using docker-compose
-This file is composed of the "web" service based on the odoo image and the "db" service based on the postgres image
-We have add bind mounts and volumes for data persistence
-Finally we expose the application on port 80 and we put it in the odoo_network
+The goal of this exercise is to deploy the Odoo application using docker-compose.
+This file is composed of the "web" service based on the odoo image and the "db" service based on the postgres image.
+We have add bind mounts and volumes for data persistence.
+Finally we expose the application on port 80 and we put it in the odoo_network.
 
 ## :file_folder: Mini-projet :file_folder:
 
@@ -26,7 +26,7 @@ To summarize the objective is to create microservices from the source code that 
 The goal is to produce the Dockerfile and the docker-compose to deploy this application.
 Finally we will deploy a private registry and store the built images.
 
-So in my repository you will find my Dockerfile, my docker-compose file and a cheat sheet which contains all the commands needed to build this project  
+So in my repository you will find my Dockerfile, my docker-compose file and a cheat sheet which contains all the commands needed to build this project. 
 
 You will find below the full statement proposed by Eazy-training : 
 
@@ -40,7 +40,7 @@ This repo is a simple application to list student with a webserver (PHP) and API
 
 ## [](https://github.com/diranetafen/student-list#objectives)Objectives
 
-The objectives of this practice exam are to ensure that you are able to manage a docker infrastructure, so you will be evaluated about the following
+The objectives of this practice exam are to ensure that you are able to manage a docker infrastructure, so you will be evaluated about the following.
 
 ### [](https://github.com/diranetafen/student-list#themes)Themes:
 
